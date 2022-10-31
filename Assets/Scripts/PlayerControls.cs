@@ -59,4 +59,18 @@ public class PlayerControls : MonoBehaviour
             isGrounded = false;
         }
     }
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if(collision.gameObject.name.Equals("Platform"))
+        {
+            this.transform.parent = collision.transform;
+        }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+    if (collision.gameObject.name.Equals("Platform"))
+        {
+            this.transform.parent = null;
+        }
+    }
 }
