@@ -12,6 +12,8 @@ public class PlayerControls : MonoBehaviour
     public bool isGrounded = false;
     public float checkGroundOffsetY = -1.1f;
     public float checkGroundRadius = 0.3f;
+    public Animator animator;
+    public float SX, SY;
     void Start()
     {
        rb = GetComponent<Rigidbody2D>(); 
@@ -21,6 +23,7 @@ public class PlayerControls : MonoBehaviour
     void Update()
     {
         horizontalMove = Input.GetAxisRaw("Horizontal") * speed;
+        animator.SetFloat("Horizontal", Mathf.Abs(horizontalMove));
         if(horizontalMove < 0 && facingRight)
         {
             Flip();
@@ -33,6 +36,14 @@ public class PlayerControls : MonoBehaviour
         {
             rb.AddForce(transform.up * jumpForse, ForceMode2D.Impulse);
         }
+        if (isGrounded == false)
+        {
+            animator.SetBool("jump", true);
+        }
+            else 
+            {
+                animator.SetBool("jump", false);    
+            }
     }
     private void FixedUpdate()
     {
@@ -72,5 +83,13 @@ public class PlayerControls : MonoBehaviour
         {
             this.transform.parent = null;
         }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.name == "DeadZone")
+        {
+            transform.position = new Vector3(SX,SY, transform.position.z);
+        }
+
     }
 }
