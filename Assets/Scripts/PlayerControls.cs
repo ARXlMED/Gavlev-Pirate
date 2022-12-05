@@ -14,6 +14,7 @@ public class PlayerControls : MonoBehaviour
     public float checkGroundRadius = 0.3f;
     public Animator animator;
     public float SX, SY;
+    public bool run;
     void Start()
     {
        rb = GetComponent<Rigidbody2D>(); 
@@ -44,6 +45,23 @@ public class PlayerControls : MonoBehaviour
             {
                 animator.SetBool("jump", false);    
             }
+//1 if (Input.GetKeyDown(KeyCode.X))
+//{
+//    run = run * 2;
+//}
+
+//2        if (Input.GetKeyDown(KeyCode.X))
+//        {
+//            run = true;
+//        }
+//            else 
+//            {
+//                run = false;
+//            }
+//        if (run = true)
+//        {
+//            speed = speed * 2;
+//        }
     }
     private void FixedUpdate()
     {
@@ -54,9 +72,7 @@ public class PlayerControls : MonoBehaviour
     private void Flip()
     {
         facingRight = !facingRight;
-        Vector3 theScale = transform.localScale;
-        theScale.x *= -1;
-        transform.localScale = theScale;
+        transform.Rotate(0f,180f,0f);
     }
     private void CheckGround()
     {

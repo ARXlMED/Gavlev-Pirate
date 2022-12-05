@@ -25,13 +25,13 @@ public class Pausemenu : MonoBehaviour
     {
         pauseGameMenu.SetActive(false);
         Time.timeScale = 1f;
-        PauseGame = false;
+        Pausegame = false;
     }
     public void Pause()
     {
         pauseGameMenu.SetActive(true);
         Time.timeScale = 0f;
-        PauseGame = true;
+        Pausegame = true;
     }
     public void LoadMenu()
     {

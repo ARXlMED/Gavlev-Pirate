@@ -6,6 +6,8 @@ TagManager:
   tags:
   - silvercoins
   - platform
+  - Enemy
+  - Bullet
   layers:
   - Default
   - TransparentFX
