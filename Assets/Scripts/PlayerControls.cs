@@ -14,7 +14,6 @@ public class PlayerControls : MonoBehaviour
     public float checkGroundRadius = 0.3f;
     public Animator animator;
     public float SX, SY;
-    public bool run;
     void Start()
     {
        rb = GetComponent<Rigidbody2D>(); 
